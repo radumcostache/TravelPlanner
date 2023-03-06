@@ -118,7 +118,7 @@ class Destination {
     Rating rating, attractionRating;
 public:
     Destination(const std::string &name_, const std::string &description_, const Point &location_,
-                const std::vector<Attraction> attraction_, const Rating &rating_, const Rating &attractionRating_) : name(name_), description(description_),
+                const std::vector<Attraction> & attraction_, const Rating &rating_, const Rating &attractionRating_) : name(name_), description(description_),
                                                                                                                      location(location_), attraction(attraction_),
                                                                                                                      rating(rating_), attractionRating(attractionRating_) {}
     Destination(const Destination & other) : name(other.name), description(other.description),
