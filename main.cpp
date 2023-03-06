@@ -1,180 +1,116 @@
+#include <rlutil.h>
+#include <digestpp.hpp>
+#include <random.hpp>
+#include <csv.hpp>
+#include <date.h>
+
 #include <iostream>
-#include <string>
-#include <vector>
-#include <cmath>
-#include <algorithm>
-class Rating {
-    float val;
-    int numberOfRatings;
-public:
-    Rating() {val = 0; numberOfRatings = 0;}
-    Rating(float val, int numberOfRatings) : val(val), numberOfRatings(numberOfRatings) {}
-    Rating(const Rating &other) : val(other.val), numberOfRatings(other.numberOfRatings) {}
-    Rating(Rating && other) : val{std::move(other.val)}, numberOfRatings{std::move(other.numberOfRatings)} {}
-    ~Rating() {
+#include <cctype>
+#include <chrono>
+#include <thread>
 
+std::string make_salt() {
+    // important este ca salt-ul să fie unic, nu contează că nu este aleator
+    // se stochează ca text clar, lângă parola hashed
+    static uint64_t nr = 1u;
+    std::string salt;
+    auto bytes = static_cast<unsigned char*>(static_cast<void*>(&nr));
+    for(unsigned i = 0; i < 16; i++) {
+        salt += bytes[i%8];
     }
+    ++nr;
+    return salt;
+}
 
-    Rating& operator=(const Rating& other) {
-        val = other.val;
-        numberOfRatings = other.numberOfRatings;
-        return *this;
-    }
-    void addRating(int newRating) {
-        val *= (float)numberOfRatings;
-        val += (float)newRating;
-        numberOfRatings++;
-        val /= (float)numberOfRatings;
-    }
-    void addRating(const Rating &newRating) {
-        val *= (float)numberOfRatings;
-        val += newRating.getVal();
-        numberOfRatings++;
-        val /= (float)numberOfRatings;
-    }
-    float getVal() const {
-        return val;
-    }
-    int getNumberOfRatings() const {
-        return numberOfRatings;
-    }
-
-    friend std::ostream &operator<<(std::ostream &os, const Rating &rating) {
-        os << "val: " << rating.val << " numberOfRatings: " << rating.numberOfRatings;
-        return os;
-    }
-};
-class Point {
-    float x, y;
-public:
-    Point() : x(0), y(0) {}
-    Point(float x, float y) : x(x), y(y) {}
-    Point(const Point & other) : x(other.x), y(other.y) {}
-    Point(Point && other) : x{std::move(other.x)}, y(std::move(other.y)) {}
-    ~Point() {}
-
-    Point& operator=(const Point &other) {
-        x = other.x;
-        y = other.y;
-        return *this;
-    }
-
-    float Distance(Point &P) {
-        return sqrt((P.x - P.y) * (P.x - P.y));
-    }
-
-    friend std::ostream &operator<<(std::ostream &os, const Point &point) {
-        os << "x: " << point.x << " y: " << point.y;
-        return os;
-    }
-
-
-};
-class Attraction {
-    std::string name;
-    std::string description;
-    Point location;
-    Rating rating;
-public:
-    Attraction() : rating(), name(), location(), description() {}
-    Attraction(const std::string &name, const std::string &description, const Point &location, const Rating &rating)
-            : name(name), description(description), location(location), rating(rating) {}
-    Attraction(const Attraction & t) : name(t.name), rating(t.rating), location(t.location), description(t.description) {}
-    Attraction(Attraction && other) : name{std::move(other.name)}, rating{std::move(other.rating)},
-                                    location{std::move(other.location)}, description{std::move(other.description)} {}
-    ~Attraction() {}
-
-    Attraction &operator =(Attraction &other) {
-        name = other.name;
-        description = other.description;
-        location = other.location;
-        rating = other.rating;
-        return *this;
-    }
-
-    const Rating &getRating() const {
-        return rating;
-    }
-
-    const Point & getLocation() {
-        return location;
-    }
-
-    float Distance(Point & P) {
-        return P.Distance(location);
-    }
-
-    friend std::ostream &operator<<(std::ostream &os, const Attraction &attraction) {
-        os << "name: " << attraction.name << " description: " << attraction.description << " location: "
-           << attraction.location << " rating: " << attraction.rating;
-        return os;
-    }
-};
-
-class Destination {
-    std::string name;
-    std::string description;
-    Point location;
-    std::vector<Attraction> attraction;
-    Rating rating, attractionRating;
-public:
-    Destination(const std::string &name_, const std::string &description_, const Point &location_,
-                const std::vector<Attraction> attraction_, const Rating &rating_, const Rating &attractionRating_) : name(name_), description(description_),
-                                                                        location(location_), attraction(attraction_),
-                                                                        rating(rating_), attractionRating(attractionRating_) {}
-    Destination(const Destination & other) : name(other.name), description(other.description),
-                                            location(other.location), attraction(other.attraction),
-                                            rating(other.rating), attractionRating(other.rating) {}
-    Destination(Destination && other) : rating{std::move(other.rating)}, name{std::move(other.name)},
-                                        location{std::move(other.location)},
-                                        attraction(std::move(other.attraction)), description{std::move(other.description)},
-                                        attractionRating{std::move(other.attractionRating)} {}
-    ~Destination() {}
-
-    Destination& operator=(const Destination & other) {
-        name = other.name;
-        description = other.name;
-        location = other.location;
-        attraction.clear();
-        for (auto it:other.attraction)
-            attraction.push_back(it);
-        rating = other.rating;
-        attractionRating = other.attractionRating;
-
-    }
-
-
-    void addAttraction(Attraction &A) {
-        attraction.push_back(A);
-        attractionRating.addRating(A.getRating());
-    }
-    float distanceFromCenter(Attraction &A) {
-        return A.Distance(location);
-    }
-    std::vector<Attraction> &topByDistance(Point P) {
-        sort(attraction.begin(), attraction.end(), [&P](Attraction & A, Attraction & B) {return A.Distance(P) < B.Distance(P);});
-        return attraction;
-    }
-    std::vector<Attraction> &topByCenter(){
-        return topByDistance(location);
-    }
-
-    friend std::ostream &operator<<(std::ostream &os, const Destination &destination) {
-        os << "name: " << destination.name << " description: " << destination.description << " location: "
-           << destination.location << " attractions: ";
-
-        for(auto it:destination.attraction) {
-            os << it << ' ';
-        }
-        os << '\n';
-        os << " rating: " << destination.rating
-           << " attractionRating: " << destination.attractionRating;
-        return os;
-    };
-};
-
+std::string hash_password(const std::string& plain) {
+    return digestpp::blake2b(512).set_salt(make_salt()).absorb(plain).hexdigest();
+}
 
 int main() {
+    std::cout << "-----------------------------------------------\n";
 
+    std::string plain = "temaOOP12345$";
+    std::cout << hash_password(plain) << "\n"
+              << hash_password(plain) << "\n";
+
+    std::cout << "-----------------------------------------------\n";
+
+    rlutil::setConsoleTitle("test");
+    rlutil::saveDefaultColor();
+    rlutil::setColor(rlutil::BLUE);
+    rlutil::cls();
+    int key = rlutil::getkey(); // apel blocant; apelează kbhit și getch
+    switch(std::tolower(key)) {
+    case rlutil::KEY_SPACE:
+        std::cout << "pressed space\n";
+        break;
+    case 'w':
+        std::cout << "pressed w\n";
+        break;
+    case 'a':
+        std::cout << "pressed a\n";
+        break;
+    case 's':
+        std::cout << "pressed s\n";
+        break;
+    case 'd':
+        std::cout << "pressed d\n";
+        break;
+    default:
+        std::cout << "other key (" << key << ")\n";
+        break;
+    }
+    std::cout << "test color text\n";
+    rlutil::resetColor();
+
+    std::cout << "-----------------------------------------------\n";
+
+    using namespace std::chrono_literals;
+    std::cout << "begin sleep\n";
+    std::this_thread::sleep_for(600ms);
+    std::cout << "end sleep\n";
+
+    std::cout << "-----------------------------------------------\n";
+
+    using Random = effolkronium::random_static;
+    // Random::seed(42);
+    std::cout << Random::get(1, 1000) << "\n";
+
+    std::cout << "-----------------------------------------------\n";
+
+    using namespace csv;
+    CSVReader reader{"date.csv"};
+    for (CSVRow& row : reader) {
+        std::cout << "nume: " << row["nume"].get_sv() << "\n";
+        // std::cout << "nume: " << row["nume"].get<>() << "\n";
+    }
+
+    std::cout << "-----------------------------------------------\n";
+
+    using namespace std::chrono;
+    using namespace date;
+    using date::sys_days;
+    using date::days;
+    using date::weeks;
+    using date::months;
+    auto d1 = 2022_y/10/01;
+    auto d2 = 2023_y/05/26;
+
+    auto dp1 = sys_days{d1};
+    auto dp2 = sys_days{d2};
+
+    std::cout << "Anul 2022-2023 are "
+              << duration<float, months::period>(dp2 - dp1).count() << " luni"
+              << " sau "
+              << duration<float, weeks::period>(dp2 - dp1).count() << " săptămâni"
+              << " sau "
+              << duration<float, days::period>(dp2 - dp1).count() << " zile"
+              << ", adică "
+              << floor<months>(dp2 - dp1).count() << " luni, "
+              << floor<weeks>(dp2 - dp1 - floor<months>(dp2 - dp1)).count() << " săptămâni, "
+              << floor<days>(dp2 - dp1 - floor<weeks>(dp2 - dp1)).count() - 1 << " zile."
+              << "\n";
+
+    std::cout << "-----------------------------------------------\n";
     return 0;
 }
