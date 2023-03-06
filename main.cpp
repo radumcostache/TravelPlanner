@@ -2,8 +2,6 @@
 #include <string>
 #include <vector>
 #include <cmath>
-#include <algorithm>
-
 class Rating {
     float val;
     int numberOfRatings;
@@ -77,7 +75,7 @@ class Attraction {
     Point location;
     Rating rating;
 public:
-    Attraction() : rating(), name(), location(), description() {}
+    Attraction() : name(),  description(), location(), rating() {}
     Attraction(const std::string &name, const std::string &description, const Point &location, const Rating &rating)
             : name(name), description(description), location(location), rating(rating) {}
     Attraction(const Attraction & t) : name(t.name), rating(t.rating), location(t.location), description(t.description) {}
@@ -141,7 +139,7 @@ public:
             attraction.push_back(it);
         rating = other.rating;
         attractionRating = other.attractionRating;
-
+        return *this;
     }
 
 
