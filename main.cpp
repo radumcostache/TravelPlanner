@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include <algorithm>
+
 class Rating {
     float val;
     int numberOfRatings;
@@ -198,7 +200,7 @@ public:
         return prio.getMatching(characteristics);
     }
     static Destination bestMatch(std::vector<Destination> &v, Characteristics & prio) {
-        float best; 
+        float best = 0;
         Destination ret;
         for (auto it:v) {
             float curr = it.getMatching(prio);
@@ -213,14 +215,14 @@ public:
         return this->name;
     }
     std::vector<Attraction> &topByDistance(Point P) {
-        std::sort(attraction.begin(), attraction.end(), [&P](Attraction & A, Attraction & B) {return A.Distance(P) < B.Distance(P);});
+        sort(attraction.begin(), attraction.end(), [&P](Attraction & A, Attraction & B) {return A.Distance(P) < B.Distance(P);});
         return attraction;
     }
     std::vector<Attraction> &topByCenter(){
         return topByDistance(location);
     }
     std::vector<Attraction> &topByReviews() {
-        std::sort(attraction.begin(), attraction.end(), [](Attraction & A, Attraction & B) {return A.getRating().getVal() > B.getRating().getVal();});
+        sort(attraction.begin(), attraction.end(), [](Attraction & A, Attraction & B) {return A.getRating().getVal() > B.getRating().getVal();});
         return attraction;
     }
     friend std::ostream &operator<<(std::ostream &os, const Destination &destination) {
