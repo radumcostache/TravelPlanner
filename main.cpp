@@ -176,6 +176,7 @@ public:
         this->attractionRating = rt;
         std::cerr << "Successful use of Destination constructor";
     }
+    Destination(const Destination &) = default;
     ~Destination() {
         std::cerr << "Successful use of Destination constructor";
     }
@@ -198,7 +199,7 @@ public:
     }
     static Destination bestMatch(std::vector<Destination> &v, Characteristics & prio) {
         float best; 
-        Destination ret; 
+        Destination ret;
         for (auto it:v) {
             float curr = it.getMatching(prio);
             if (curr > best) {
@@ -212,14 +213,14 @@ public:
         return this->name;
     }
     std::vector<Attraction> &topByDistance(Point P) {
-        sort(attraction.begin(), attraction.end(), [&P](Attraction & A, Attraction & B) {return A.Distance(P) < B.Distance(P);});
+        std::sort(attraction.begin(), attraction.end(), [&P](Attraction & A, Attraction & B) {return A.Distance(P) < B.Distance(P);});
         return attraction;
     }
     std::vector<Attraction> &topByCenter(){
         return topByDistance(location);
     }
     std::vector<Attraction> &topByReviews() {
-        sort(attraction.begin(), attraction.end(), [](Attraction & A, Attraction & B) {return A.getRating().getVal() > B.getRating().getVal();});
+        std::sort(attraction.begin(), attraction.end(), [](Attraction & A, Attraction & B) {return A.getRating().getVal() > B.getRating().getVal();});
         return attraction;
     }
     friend std::ostream &operator<<(std::ostream &os, const Destination &destination) {
