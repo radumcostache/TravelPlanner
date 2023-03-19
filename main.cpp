@@ -12,7 +12,7 @@ public:
     /*Rating(float val, int numberOfRatings) : val(val), numberOfRatings(numberOfRatings) {
         std::cerr << "Successful use of Rating constructor";
     }*/
-    Rating(float val): val(val), numberOfRatings(1) {
+    explicit Rating(float val): val(val), numberOfRatings(1) {
         std::cerr << "Successful use of Rating constructor";
     };
     Rating(const Rating &other) : val(other.val), numberOfRatings(other.numberOfRatings) {
@@ -110,7 +110,7 @@ public:
         return location;
     }*/
 
-    float Distance(Point & P) {
+    float Distance(const Point & P) const {
         return P.Distance(location);
     }
 
@@ -215,14 +215,14 @@ public:
         return this->name;
     }
     std::vector<Attraction> &topByDistance(Point P) {
-        sort(attraction.begin(), attraction.end(), [&P](Attraction & A, Attraction & B) {return A.Distance(P) < B.Distance(P);});
+        sort(attraction.begin(), attraction.end(), [&P](const Attraction & A,const  Attraction & B) {return A.Distance(P) < B.Distance(P);});
         return attraction;
     }
     std::vector<Attraction> &topByCenter(){
         return topByDistance(location);
     }
     std::vector<Attraction> &topByReviews() {
-        sort(attraction.begin(), attraction.end(), [](Attraction & A, Attraction & B) {return A.getRating().getVal() > B.getRating().getVal();});
+        sort(attraction.begin(), attraction.end(), [](const Attraction & A, const Attraction & B) {return A.getRating().getVal() > B.getRating().getVal();});
         return attraction;
     }
     friend std::ostream &operator<<(std::ostream &os, const Destination &destination) {
