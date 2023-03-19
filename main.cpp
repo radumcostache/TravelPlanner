@@ -199,11 +199,11 @@ public:
     float getMatching(Characteristics & prio) {
         return prio.getMatching(characteristics);
     }
-    static Destination bestMatch(std::vector<Destination> &v, Characteristics & prio) {
+    static Destination bestMatch(const std::vector<Destination> &v, const Characteristics & prio) {
         float best = 0;
         Destination ret;
         for (auto it:v) {
-            float curr = it.getMatching(prio);
+            float curr = it.getMatching(const_cast<Characteristics &>(prio));
             if (curr > best) {
                 best = curr;
                 ret = it;
