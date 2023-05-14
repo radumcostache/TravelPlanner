@@ -25,7 +25,7 @@ public:
     virtual void draw(sf::RenderWindow& window) = 0;
     virtual std::string handleEvent(sf::Event event, sf::RenderWindow& window) = 0;
     virtual void reset() = 0;
-    void addError(std::string error);
+    void addError(std::string & error);
     void drawBackground(sf::RenderWindow& window);
     void addButton(Button button);
     virtual ~Frame() {std::cout << "Frame destructor called\n";};

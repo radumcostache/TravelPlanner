@@ -19,7 +19,7 @@ Frame::Frame(User &user) : user(user) {
     background.setFillColor(sf::Color::White);
 }
 
-void Frame::addError(std::string error) {
+void Frame::addError(std::string & error) {
     err = error;
 
 }

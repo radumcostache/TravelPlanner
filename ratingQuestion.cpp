@@ -35,9 +35,9 @@ ratingQuestion::ratingQuestion(std::string question, Characteristics &characteri
                         20, sf::Color::Black, sf::Color::Cyan);
 }
 
-void ratingQuestion::updateUser(User &user) {
+/*void ratingQuestion::updateUser(User &user) {
     user.updateCharacteristics(characteristics, answer);
-}
+}*/
 
 std::string ratingQuestion::handleEvent(sf::Event event, sf::RenderWindow &window) {
     for (int i = 0; i < 5; i++) {

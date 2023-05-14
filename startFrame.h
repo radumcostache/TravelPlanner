@@ -25,7 +25,7 @@ public:
     std::string handleEvent(sf::Event event, sf::RenderWindow &window) override;
     void draw(sf::RenderWindow &window) override;
     void reset() override;
-    startFrame(User &user);
+    explicit startFrame(User &user);
 };
 
 

@@ -17,13 +17,13 @@ class FrameErr : public std::runtime_error {
 
 class bad_input : public FrameErr {
 public:
-    explicit bad_input (std::string mesaj) :
+    explicit bad_input (std::string & mesaj) :
             FrameErr("eroare input: " + mesaj) {}
 };
 
 class end_frame : public FrameErr {
 public:
-    explicit end_frame (std::string mesaj) :
+    explicit end_frame (std::string & mesaj) :
             FrameErr("eroare end_frame: " + mesaj) {}
 };
 

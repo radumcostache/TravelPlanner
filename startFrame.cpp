@@ -11,7 +11,8 @@ std::string startFrame::handleEvent(sf::Event event, sf::RenderWindow &window) {
             double lati = std::stod(latiBox.getText());
             double longi = std::stod(longiBox.getText());
             if (lati < -90 || lati > 90 || longi < -180 || longi > 180) {
-                throw bad_input("Invalid coordinates");
+                std::string er = "Invalid coordinates";
+                throw bad_input(er);
             }
             user.updateLocation(lati, longi);
             return "Start";
