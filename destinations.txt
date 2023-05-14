@@ -1,0 +1,76 @@
+Madrid
+Vibrant capital of Spain, known for its rich history, stunning architecture, lively cultural scene, and passionate soccer culture.
+40.4168 3.7038
+7
+Royal Palace of Madrid
+3
+Plaza Mayor
+4
+Puerta del Sol
+5
+Museo del Prado
+5
+Parque del Buen Retiro
+4
+Plaza de Cibeles
+4
+Plaza de España
+3
+5 4 5 3
+Paris
+The capital of France, known for its romantic atmosphere, historic architecture, and world-class art museums.
+48.8566 2.3522
+7
+Eiffel Tower
+5
+Louvre Museum
+5
+Arc de Triomphe
+4
+Notre-Dame de Paris
+4
+Champs-Élysées
+4
+Musée d'Orsay
+4
+Palace of Versailles
+4
+5 5 5 2
+Tokyo
+Japan's capital, known for its unique blend of traditional and modern culture, and its neon-lit skyscrapers.
+35.6762 139.6503
+7
+Tokyo Tower
+5
+Shibuya Crossing
+5
+Meiji Shrine
+4
+Tokyo Skytree
+4
+Senso-ji
+4
+Imperial Palace
+4
+Shinjuku Gyoen National Garden
+4
+4 4 5 2
+London
+The capital of England and the United Kingdom, known for its rich history, world-class museums, and vibrant culture.
+51.5074 -0.1278
+7
+Big Ben
+5
+Tower Bridge
+5
+Buckingham Palace
+4
+London Eye
+4
+Westminster Abbey
+4
+Tower of London
+4
+Trafalgar Square
+4
+3 3 3 3

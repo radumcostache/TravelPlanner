@@ -1,0 +1,15 @@
+yn
+Are you an introvert?
+5 0 5 1
+rating
+How much do you care about dating?
+0 5 0 4
+rating
+How much do you value architecture?
+5 0 0 0
+rating
+How much do you care about culture?
+5 0 5 0
+yn
+Are you into nightlife?
+0 0 0 5
