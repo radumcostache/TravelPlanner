@@ -80,6 +80,7 @@ int main() {
                 delete F;
                 Destination d = Destination::bestMatch(destinations, user.getCharacteristics());
                 F = new destinationFrame(user, d);
+                std::cerr << e.what() << '\n';
             }
 
         }
