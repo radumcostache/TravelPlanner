@@ -13,7 +13,7 @@ class User {
     Point location;
     Characteristics characteristics;
 public:
-    void updateCharacteristics(Characteristics &characteristics, int multiplier);
+    void updateCharacteristics(const Characteristics &characteristics, int multiplier);
     Point getLocation();
     const Characteristics & getCharacteristics();
 

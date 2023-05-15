@@ -12,7 +12,7 @@ void User::updateLocation(double lati, double longi) {
     location = Point(lati, longi);
 }
 
-void User::updateCharacteristics(Characteristics &characteristics, int multiplier) {
+void User::updateCharacteristics(const Characteristics &characteristics, int multiplier) {
     this->characteristics.updateCharacteristics(characteristics, multiplier);
 }
 

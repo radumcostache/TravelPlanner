@@ -16,7 +16,7 @@ class tfQuestion : public Question{
 public:
     Button yesButton;
     Button noButton;
-    tfQuestion(std::string question, Characteristics &characteristics);
+    tfQuestion(const std::string & question, Characteristics &characteristics);
     ~tfQuestion() override;
 
     void showQuestion(sf::RenderWindow &window) override;

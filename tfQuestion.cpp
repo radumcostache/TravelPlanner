@@ -5,7 +5,7 @@
 #include <iostream>
 #include "tfQuestion.h"
 
-tfQuestion::tfQuestion(std::string question, Characteristics &characteristics) : Question(question, characteristics),
+tfQuestion::tfQuestion(const std::string & question, Characteristics &characteristics) : Question(question, characteristics),
     yesButton(sf::Vector2f(50, 50), sf::Vector2f(40, 40),"YES",20, sf::Color::Black, sf::Color::Green),
     noButton(sf::Vector2f(90, 50), sf::Vector2f(40, 40),"NO",20, sf::Color::Black, sf::Color::Red) {
     std::cout << "tfQuestion constructor" << std::endl;

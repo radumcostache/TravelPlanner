@@ -17,7 +17,7 @@ protected:
     std::string question;
     Characteristics characteristics;
 public:
-    Question(std::string question, Characteristics & characteristics);
+    Question(const std::string & question, Characteristics & characteristics);
     Question() = default;
     virtual ~Question();
     virtual void showQuestion(sf::RenderWindow &window) = 0;

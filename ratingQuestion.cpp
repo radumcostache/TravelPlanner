@@ -22,7 +22,7 @@ void ratingQuestion::showQuestion(sf::RenderWindow &window) {
 
 }
 
-ratingQuestion::ratingQuestion(std::string question, Characteristics &characteristics) : Question(question, characteristics) {
+ratingQuestion::ratingQuestion(const std::string & question, Characteristics &characteristics) : Question(question, characteristics) {
     buttons[0] = Button(sf::Vector2f(30, 100), sf::Vector2f(40, 40),"1",
                         20, sf::Color::Black, sf::Color::Cyan);
     buttons[1] = Button(sf::Vector2f(90, 100), sf::Vector2f(40, 40),"2",
