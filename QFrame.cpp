@@ -10,8 +10,10 @@
 void QFrame::draw(sf::RenderWindow &window) {
     if (currentQuestion < questions.size())
         questions[currentQuestion]->showQuestion(window);
-    else
-        throw end_frame("No more questions");
+    else {
+        std::string er = "No more questions";
+        throw end_frame(er);
+    }
 }
 
 void QFrame::nextQuestion() {
