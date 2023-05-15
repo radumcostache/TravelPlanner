@@ -32,7 +32,7 @@ std::string QFrame::handleEvent(sf::Event event, sf::RenderWindow &window) {
                     if(auto *q = dynamic_cast<ratingQuestion *>(questions[currentQuestion].get()))
                         user.updateCharacteristics(ch, q->getAnswer());
                     else
-                        if (auto *q = dynamic_cast<tfQuestion *>(questions[currentQuestion].get()))
+                        if (dynamic_cast<tfQuestion *>(questions[currentQuestion].get()))
                         user.updateCharacteristics(ch, 3);
                     else
                         std::cout << "Error casting" << std::endl;
