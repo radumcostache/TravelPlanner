@@ -12,7 +12,7 @@
 
 class Characteristics {
 private:
-    std::array<Rating, 4> characteristics = {Rating(0), Rating(0), Rating(0)};
+    std::array<Rating, 4> characteristics = {Rating(0), Rating(0), Rating(0), Rating(0)};
 public:
     Characteristics() = default;
     Characteristics(int a, int b, int c, int d);
