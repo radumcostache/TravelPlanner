@@ -4,7 +4,7 @@
 
 #include "destinationFrame.h"
 
-destinationFrame::destinationFrame(User &user, Destination &destination) : Frame(user) , destination(destination) {
+destinationFrame::destinationFrame(User &user, Destination &destination) : Frame(user) {
     font.loadFromFile("fonts/arial.ttf");
     nameText.setFont(font);
     nameText.setCharacterSize(20);

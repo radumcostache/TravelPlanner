@@ -8,7 +8,7 @@
 #include "FrameErr.h"
 
 void QFrame::draw(sf::RenderWindow &window) {
-    if (currentQuestion < questions.size())
+    if (currentQuestion < (int)questions.size())
         questions[currentQuestion]->showQuestion(window);
     else {
         std::string er = "No more questions";
@@ -18,7 +18,7 @@ void QFrame::draw(sf::RenderWindow &window) {
 
 void QFrame::nextQuestion() {
     currentQuestion++;
-    if (currentQuestion >= questions.size()) {
+    if (currentQuestion >= (int)questions.size()) {
         std::string er = "No more questions";
         throw end_frame(er);
     }
