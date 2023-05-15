@@ -36,7 +36,7 @@ ratingQuestion::ratingQuestion(const std::string & question, Characteristics &ch
 }
 
 /*void ratingQuestion::updateUser(User &user) {
-    user.updateCharacteristics(characteristics, answer);
+    user.updateCharacteristics(chr, answer);
 }*/
 
 std::string ratingQuestion::handleEvent(sf::Event event, sf::RenderWindow &window) {
