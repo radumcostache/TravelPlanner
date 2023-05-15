@@ -12,11 +12,11 @@ float Characteristics::getMatching(const Characteristics &c) {
     return ret;
 }
 
-void Characteristics::updateCharacteristics(const Characteristics &characteristics, int multiplier) {
+void Characteristics::updateCharacteristics(const Characteristics &extra, int multiplier) {
     for (int i = 0; i < 4; i++)
-        if (characteristics.characteristics[i].getVal() != 0)
+        if (extra.characteristics[i].getVal() != 0)
         for (int j = 0; j < multiplier; j++)
-            this->characteristics[i].addRating(characteristics.characteristics[i].getVal());
+            this->characteristics[i].addRating(extra.characteristics[i].getVal());
 }
 
 Characteristics::Characteristics(int a, int b, int c, int d) {

@@ -19,7 +19,7 @@ public:
 
     float getMatching(const Characteristics &c);
 
-    void updateCharacteristics(const Characteristics &characteristics, int multiplier);
+    void updateCharacteristics(const Characteristics &extra, int multiplier);
 };
 
 #endif //OOP_CHARACTERISTICS_H
