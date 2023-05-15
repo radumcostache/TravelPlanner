@@ -10,6 +10,7 @@
 #include "Destination.h"
 
 class destinationFrame : public Frame {
+    
     sf::Font font;
     sf::Text nameText;
     sf::Text descriptionText;

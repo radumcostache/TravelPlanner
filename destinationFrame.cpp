@@ -4,7 +4,7 @@
 
 #include "destinationFrame.h"
 
-destinationFrame::destinationFrame(User &user, Destination &destination) : Frame(user) {
+destinationFrame::destinationFrame(User &user, Destination &destination) : Frame(user)  {
     font.loadFromFile("fonts/arial.ttf");
     nameText.setFont(font);
     nameText.setCharacterSize(20);
@@ -31,9 +31,13 @@ destinationFrame::destinationFrame(User &user, Destination &destination) : Frame
 }
 
 std::string destinationFrame::handleEvent(sf::Event event, sf::RenderWindow &window) {
-    delete &event;
-    window.setActive();
+    if (event.type == sf::Event::MouseButtonPressed) {
+        if (event.mouseButton.button == sf::Mouse::Left) {
+            return "YES";
+        }
+    }
 
+    return window.isOpen() ? "" : "YES";
 }
 
 void destinationFrame::reset() {
@@ -45,5 +49,4 @@ void destinationFrame::draw(sf::RenderWindow &window) {
     window.draw(nameText);
     window.draw(descriptionText);
     window.draw(attractionText);
-
 }
