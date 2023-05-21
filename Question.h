@@ -16,8 +16,13 @@ class Question {
 protected:
     std::string question;
     Characteristics characteristics;
+    double answer = 0;
+public:
+    double getAnswer() const;
+
 public:
     Question(const std::string & question, Characteristics & characteristics);
+    Question(const std::string & question);
     Question() = default;
     virtual ~Question();
     virtual void showQuestion(sf::RenderWindow &window) = 0;

@@ -6,6 +6,7 @@
 
 #include "Destination.h"
 #include "Characteristics.h"
+#include "FrameErr.h"
 
 Destination::Destination(const std::string &name, const std::string &description, const Point &location,
                          const std::vector<Attraction> &attraction,
@@ -50,17 +51,23 @@ float Destination::getMatching(Characteristics &prio) {
     return prio.getMatching(characteristics);
 }
 
-Destination Destination::bestMatch(const std::vector<Destination> &v, Characteristics prio) {
+Destination Destination::bestMatch(const std::vector<Destination> &v, Characteristics prio, const Point &location) {
     float best = 0;
     Destination ret;
+    bool ok = 0;
     for (auto it:v) {
+        if(it.getLocation().Distance(location) > MAX_DISTANCE)
+            continue;
         float curr = it.getMatching(prio);
         if (curr > best) {
+            ok = 1;
             best = curr;
             ret = it;
         }
     }
-    return ret;
+    if(ok == 1)
+        return ret;
+    throw FrameErr("No destination found");
 }
 
 const std::string &Destination::getDescription() const {
@@ -70,3 +77,8 @@ const std::string &Destination::getDescription() const {
 const Point &Destination::getLocation() const {
     return location;
 }
+
+void Destination::setMaxDistance(double maxDistance) {
+    MAX_DISTANCE = maxDistance;
+}
+

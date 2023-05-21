@@ -19,3 +19,11 @@ void User::updateCharacteristics(const Characteristics &extra, int multiplier) {
 const Characteristics & User::getCharacteristics() {
     return chr;
 }
+
+void User::addAnswer(double answer) {
+    answers.push_back(answer);
+}
+
+const std::vector<double> &User::getAnswers() const {
+    return answers;
+}

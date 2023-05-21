@@ -12,7 +12,6 @@
 
 class ratingQuestion : public Question{
 private:
-    int answer = 0;
     Button buttons[5];
     //void updateUser(User &user);
     std::string handleEvent(sf::Event event, sf::RenderWindow& window) override;
@@ -20,7 +19,6 @@ public:
     ratingQuestion(const std::string & question, Characteristics &characteristics);
     void showQuestion(sf::RenderWindow &window) override;
 
-    int getAnswer() const;
 };
 
 

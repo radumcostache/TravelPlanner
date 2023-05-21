@@ -9,6 +9,7 @@ tfQuestion::tfQuestion(const std::string & question, Characteristics &characteri
     yesButton(sf::Vector2f(50, 50), sf::Vector2f(40, 40),"YES",20, sf::Color::Black, sf::Color::Green),
     noButton(sf::Vector2f(90, 50), sf::Vector2f(40, 40),"NO",20, sf::Color::Black, sf::Color::Red) {
     std::cout << "tfQuestion constructor" << std::endl;
+    answer = 3;
 }
 
 tfQuestion::~tfQuestion() {

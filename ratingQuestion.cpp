@@ -19,7 +19,6 @@ void ratingQuestion::showQuestion(sf::RenderWindow &window) {
         button.draw(window);
     }
 
-
 }
 
 ratingQuestion::ratingQuestion(const std::string & question, Characteristics &characteristics) : Question(question, characteristics) {
@@ -48,8 +47,4 @@ std::string ratingQuestion::handleEvent(sf::Event event, sf::RenderWindow &windo
         }
     }
     return "";
-}
-
-int ratingQuestion::getAnswer() const {
-    return answer;
 }

@@ -13,4 +13,12 @@ const Characteristics &Question::getCharacteristics() const {
     return characteristics;
 }
 
+double Question::getAnswer() const {
+    return answer;
+}
+
+Question::Question(const std::string &question) : question(question), characteristics(){
+    std::cout << "Question constructor" << std::endl;
+}
+
 

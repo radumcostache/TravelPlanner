@@ -13,6 +13,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
+double Destination::MAX_DISTANCE = 1000.5;
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
@@ -29,7 +30,6 @@ int main() {
     text.setStyle(sf::Text::Bold | sf::Text::Underlined);
     User user;
     Frame * F = new startFrame(user);
-    std::ifstream f("questions.txt");
 
     std::vector<Destination> destinations;
     std::ifstream dest("destinations.txt");
@@ -71,21 +71,29 @@ int main() {
                 std::string s = F->handleEvent(event, window);
                 if (s == "Start") {
                     delete F;
+                    std::ifstream f("questions.txt");
                     F = new QFrame(user, f);
+                }
+                else if(s == "end") {
+                    auto chr = user.getCharacteristics();
+                    Destination::setMaxDistance(user.getAnswers()[0]);
+                    Destination d = Destination::bestMatch(destinations, chr, user.getLocation());
+                    delete F;
+                    F = new destinationFrame(user, d);
+
                 }
             }catch (bad_input & e){
                 F->reset();
                 F->addError(e.what());
-            }catch (end_frame & e){
+            }catch (FrameErr & e) {
                 delete F;
-                Destination d = Destination::bestMatch(destinations, user.getCharacteristics());
-                F = new destinationFrame(user, d);
-                std::cerr << e.what() << '\n';
+                F = new startFrame(user);
+                F->addError(e.what());
             }
 
         }
         window.display();
     }
-
+    delete F;
     return 0;
 }

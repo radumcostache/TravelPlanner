@@ -13,3 +13,5 @@ How much do you care about culture?
 yn
 Are you into nightlife?
 0 0 0 5
+box
+Enter the maximum distance you are willing to travel:
