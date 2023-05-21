@@ -32,7 +32,7 @@ std::string QFrame::handleEvent(sf::Event event, sf::RenderWindow &window) {
 
             }
             nextQuestion();
-            if (currentQuestion == questions.size()) {
+            if (currentQuestion == (int)questions.size()) {
                 return "end";
             }
             return "next";
