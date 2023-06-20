@@ -3,6 +3,7 @@
 //
 
 #include "startFrame.h"
+#include "Button_factory.h"
 
 std::string startFrame::handleEvent(sf::Event event, sf::RenderWindow &window) {
     for (auto button : buttons) {
@@ -63,8 +64,8 @@ startFrame::startFrame(User &user) : Frame(user) {
     longiText.setPosition(100, 200);
     longiText.setFillColor(sf::Color::Black);
 
-    Button startButton(sf::Vector2f(100, 300), sf::Vector2f(100, 100), "Start", 30, sf::Color::Green, sf::Color::Red);
-    addButton(startButton);
+    //Button startButton(sf::Vector2f(100, 300), sf::Vector2f(100, 100), "Start", 30, sf::Color::Green, sf::Color::Red);
+    addButton(Button_factory::startButton());
 }
 
 void startFrame::reset() {

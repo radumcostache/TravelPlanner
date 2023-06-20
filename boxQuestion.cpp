@@ -3,16 +3,15 @@
 //
 
 #include "boxQuestion.h"
+#include "Button_factory.h"
 
 boxQuestion::boxQuestion(const std::string &question) : Question(question),
-                                                        submitButton(sf::Vector2f(100, 50),
-                                                                                         sf::Vector2f(100, 100),
-                                                                                         "Submit", 20, sf::Color::Black, sf::Color::White),
                                                         textBox (sf::Vector2f(100, 200),
                                                                  sf::Vector2f(200, 50), 20,
                                                                  sf::Color::Black, sf::Color::White)
 
 {
+    submitButton = Button_factory::submitButton();
     std::cout << "boxQuestion constructor" << std::endl;
 }
 

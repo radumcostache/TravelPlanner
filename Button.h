@@ -19,12 +19,13 @@
 
 class Button {
 public:
-    Button() = default;
+    Button();
     Button(sf::Vector2f position, sf::Vector2f size, std::string text, int textSize, sf::Color idleColor, sf::Color hoverColor);
     ~Button() = default;
     std::string handleEvent(sf::Event event, sf::RenderWindow& window);
     void draw(sf::RenderWindow& window);
     void setPosition(sf::Vector2f position);
+    friend class Button_builder;
 
 private:
     sf::RectangleShape m_shape;

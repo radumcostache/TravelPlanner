@@ -59,7 +59,7 @@ void TextBox::handleEvent(sf::Event event)
         }
         else
         {
-            m_selected = false;
+              m_selected = false;
         }
     }
 }

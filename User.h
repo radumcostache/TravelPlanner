@@ -9,12 +9,16 @@
 #include "Characteristics.h"
 #include "Point.h"
 
-
+// Singleton
 class User {
     Point location;
     Characteristics chr;
     std::vector <double> answers;
+    User() = default;
 public:
+    User(const User &) = delete;
+    User &operator=(const User &) = delete;
+    static User &getUser();
     void updateCharacteristics(const Characteristics &extra, int multiplier);
     Point getLocation();
     const Characteristics & getCharacteristics();

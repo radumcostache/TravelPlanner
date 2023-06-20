@@ -3,7 +3,10 @@
 //
 
 #include "Button.h"
-
+    Button::Button() {
+        m_font.loadFromFile("fonts/arial.ttf");
+        m_text.setFont(m_font);
+    }
     Button::Button(sf::Vector2f position, sf::Vector2f size, std::string text, int textSize, sf::Color idleColor, sf::Color hoverColor) : m_idleColor(idleColor), m_hoverColor(hoverColor) {
         m_shape.setPosition(position);
         m_shape.setSize(size);

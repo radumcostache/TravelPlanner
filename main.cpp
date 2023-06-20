@@ -28,7 +28,7 @@ int main() {
     text.setFillColor(sf::Color::Red);
 
     text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-    User user;
+    User & user = User::getUser();
     Frame * F = new startFrame(user);
 
     std::vector<Destination> destinations;

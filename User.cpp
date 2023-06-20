@@ -13,7 +13,7 @@ void User::updateLocation(double lati, double longi) {
 }
 
 void User::updateCharacteristics(const Characteristics &extra, int multiplier) {
-    this->chr.updateCharacteristics(extra, multiplier);
+    chr.updateCharacteristics(extra, multiplier);
 }
 
 const Characteristics & User::getCharacteristics() {
@@ -22,6 +22,11 @@ const Characteristics & User::getCharacteristics() {
 
 void User::addAnswer(double answer) {
     answers.push_back(answer);
+}
+
+User &User::getUser() {
+    static User user;
+    return user;
 }
 
 const std::vector<double> &User::getAnswers() const {
