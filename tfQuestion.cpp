@@ -6,12 +6,9 @@
 #include "tfQuestion.h"
 #include "Button_factory.h"
 
-tfQuestion::tfQuestion(const std::string & question, Characteristics &characteristics) : Question(question, characteristics)
-    //yesButton(sf::Vector2f(50, 50), sf::Vector2f(40, 40),"YES",20, sf::Color::Black, sf::Color::Green),
-    //noButton(sf::Vector2f(90, 50), sf::Vector2f(40, 40),"NO",20, sf::Color::Black, sf::Color::Red) {
-{
-    yesButton = Button_factory::yButton();
-    noButton = Button_factory::nButton();
+tfQuestion::tfQuestion(const std::string & question, Characteristics &characteristics) : Question(question, characteristics),
+    yesButton( Button_factory::yButton()),
+    noButton(Button_factory::nButton()) {
     std::cout << "tfQuestion constructor" << std::endl;
     answer = 3;
 }
