@@ -31,8 +31,7 @@ Characteristics<T>::Characteristics(int a, int b, int c, int d, T t) {
     tier = t;
 }
 
-template class Characteristics<char>;
-template class Characteristics<int>;
+
 
 template<>
 Characteristics<char>::Characteristics(int a, int b, int c, int d) {
@@ -51,7 +50,16 @@ Characteristics<int>::Characteristics(int a, int b, int c, int d) {
     tier = 1;
 }
 
-std::ostream & operator<<(std::ostream &out, const Characteristics<char> &c) {
+template class Characteristics<char>;
+template class Characteristics<int>;
+
+template<typename T>
+std::ostream & operator<< (std::ostream &out, const Characteristics<T> &c) {
     out << "Tier: " << c.tier << "\n";
     return out;
 }
+
+template
+std::ostream& operator<< <>(std::ostream& o, const Characteristics<int>& x);
+template
+std::ostream& operator<< <>(std::ostream& o, const Characteristics<char>& x);

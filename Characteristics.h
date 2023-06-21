@@ -9,6 +9,12 @@
 #include <iostream>
 #include "Rating.h"
 
+template <typename T>
+class Characteristics;
+
+template <typename T>
+std::ostream& operator<<(std::ostream& o, const Characteristics<T>& c);
+
 template <class T = int>
 class Characteristics {
 private:
@@ -22,7 +28,7 @@ public:
     float getMatching(const Characteristics &c);
 
     void updateCharacteristics(const Characteristics &extra, int multiplier);
-    friend std::ostream & operator << (std::ostream &out, const Characteristics &c);
+    friend std::ostream& operator<< <>(std::ostream&, const Characteristics<T>&);
 };
 
 
