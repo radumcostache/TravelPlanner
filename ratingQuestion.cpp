@@ -22,7 +22,7 @@ void ratingQuestion::showQuestion(sf::RenderWindow &window) {
 
 }
 
-ratingQuestion::ratingQuestion(const std::string & question, Characteristics &characteristics) : Question(question, characteristics) {
+ratingQuestion::ratingQuestion(const std::string & question, Characteristics<int> &characteristics) : Question(question, characteristics) {
     Button_builder b;
     buttons[0] = Button_factory::ratingButton(0);
     buttons[1] = Button_factory::ratingButton(1);

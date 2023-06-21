@@ -94,7 +94,7 @@ endif()
 ###############################################################################
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
-add_executable(${PROJECT_NAME} main.cpp Rating.cpp Rating.h Point.cpp Point.h Button.cpp Button.h Attraction.cpp Attraction.h Destination.cpp Destination.h Characteristics.cpp Characteristics.h Frame.cpp Frame.h startFrame.cpp startFrame.h TextBox.cpp TextBox.h Question.cpp Question.h ratingQuestion.cpp ratingQuestion.h User.cpp User.h QFrame.cpp QFrame.h tfQuestion.cpp tfQuestion.h FrameErr.cpp FrameErr.h destinationFrame.cpp destinationFrame.h boxQuestion.cpp boxQuestion.h Button_builder.cpp Button_builder.h Button_factory.cpp Button_factory.h)
+add_executable(${PROJECT_NAME} main.cpp Rating.cpp Rating.h Point.cpp Point.h Button.cpp Button.h Attraction.cpp Attraction.h Destination.cpp Destination.h Characteristics.h Frame.cpp Frame.h startFrame.cpp startFrame.h TextBox.cpp TextBox.h Question.cpp Question.h ratingQuestion.cpp ratingQuestion.h User.cpp User.h QFrame.cpp QFrame.h tfQuestion.cpp tfQuestion.h FrameErr.cpp FrameErr.h destinationFrame.cpp destinationFrame.h boxQuestion.cpp boxQuestion.h Button_builder.cpp Button_builder.h Button_factory.cpp Button_factory.h)
 
 ###############################################################################
 

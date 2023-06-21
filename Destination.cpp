@@ -10,7 +10,7 @@
 
 Destination::Destination(const std::string &name, const std::string &description, const Point &location,
                          const std::vector<Attraction> &attraction,
-                         const Characteristics &characteristics) : name(name), description(description), location(location),
+                         const Characteristics<int> &characteristics) : name(name), description(description), location(location),
                                                                    attraction(attraction),
                                                                    characteristics(characteristics) {
     Rating rt;
@@ -47,11 +47,11 @@ std::vector<Attraction> &Destination::topByReviews() {
     return attraction;
 }
 
-float Destination::getMatching(Characteristics &prio) {
+float Destination::getMatching(Characteristics<int> &prio) {
     return prio.getMatching(characteristics);
 }
 
-Destination Destination::bestMatch(const std::vector<Destination> &v, Characteristics prio, const Point &location) {
+Destination Destination::bestMatch(const std::vector<Destination> &v, Characteristics<int> prio, const Point &location) {
     float best = 0;
     Destination ret;
     bool ok = 0;

@@ -22,7 +22,7 @@ class Destination {
     Point location;
     std::vector<Attraction> attraction;
     Rating attractionRating;
-    Characteristics characteristics;
+    Characteristics<int> characteristics;
     static double MAX_DISTANCE;
 public:
     static void setMaxDistance(double maxDistance);
@@ -30,18 +30,18 @@ public:
     Destination() = default;
     Destination(const std::string &name, const std::string &description, const Point &location,
                 const std::vector<Attraction> &attraction,
-                const Characteristics &characteristics);
+                const Characteristics<int> &characteristics);
     Destination(const Destination &) = default;
     ~Destination();
 
     Destination& operator=(const Destination & other);
     //void addAttraction(const Attraction & A);
-    float getMatching(Characteristics & prio);
+    float getMatching(Characteristics<int> & prio);
 
     const std::string &getDescription() const;
     const Point &getLocation() const;
 
-    static Destination bestMatch(const std::vector<Destination> &v,  Characteristics prio, const Point &location);
+    static Destination bestMatch(const std::vector<Destination> &v,  Characteristics <int> prio, const Point &location);
     std::string & getName();
     std::vector<Attraction> &topByReviews();
 

@@ -6,7 +6,7 @@
 #include "tfQuestion.h"
 #include "Button_factory.h"
 
-tfQuestion::tfQuestion(const std::string & question, Characteristics &characteristics) : Question(question, characteristics),
+tfQuestion::tfQuestion(const std::string & question, Characteristics<int> &characteristics) : Question(question, characteristics),
     yesButton( Button_factory::yButton()),
     noButton(Button_factory::nButton()) {
     std::cout << "tfQuestion constructor" << std::endl;

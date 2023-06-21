@@ -7,9 +7,9 @@
 
 Question::~Question() {}
 
-Question::Question(const std::string & question, Characteristics &characteristics) : question(question), characteristics(characteristics) {std::cout << "Question constructor" << std::endl;}
+Question::Question(const std::string & question, Characteristics<int> &characteristics) : question(question), characteristics(characteristics) {std::cout << "Question constructor" << std::endl;}
 
-const Characteristics &Question::getCharacteristics() const {
+const Characteristics<int> &Question::getCharacteristics() const {
     return characteristics;
 }
 

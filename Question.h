@@ -15,19 +15,19 @@
 class Question {
 protected:
     std::string question;
-    Characteristics characteristics;
+    Characteristics<int> characteristics;
     double answer = 0;
 public:
     double getAnswer() const;
 
 public:
-    Question(const std::string & question, Characteristics & characteristics);
+    Question(const std::string & question, Characteristics<int> & characteristics);
     Question(const std::string & question);
     Question() = default;
     virtual ~Question();
     virtual void showQuestion(sf::RenderWindow &window) = 0;
     virtual std::string handleEvent(sf::Event event, sf::RenderWindow& window) = 0;
-    const Characteristics &getCharacteristics() const;
+    const Characteristics<int> &getCharacteristics() const;
 
 };
 

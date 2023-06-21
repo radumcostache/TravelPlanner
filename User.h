@@ -12,16 +12,16 @@
 // Singleton
 class User {
     Point location;
-    Characteristics chr;
+    Characteristics<int> chr;
     std::vector <double> answers;
     User() = default;
 public:
     User(const User &) = delete;
     User &operator=(const User &) = delete;
     static User &getUser();
-    void updateCharacteristics(const Characteristics &extra, int multiplier);
+    void updateCharacteristics(const Characteristics<int> &extra, int multiplier);
     Point getLocation();
-    const Characteristics & getCharacteristics();
+    const Characteristics<int> & getCharacteristics();
     void addAnswer(double answer);
     void updateLocation(double lati, double longi);
 
