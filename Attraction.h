@@ -8,16 +8,21 @@
 #include <iostream>
 #include "Point.h"
 #include "Rating.h"
+#include "Characteristics.h"
 
 class Attraction {
     std::string name;
     Rating rating;
+    Characteristics<char> chr;
 public:
     Attraction();
     Attraction(const std::string &name, const Rating &rating);
     Attraction(const Attraction & t) = default;
     ~Attraction();
     Attraction &operator =(const Attraction &other) = default;
+
+    const Characteristics<char> &getChr() const;
+
     const Rating &getRating() const;
     const std::string &getName() const;
 

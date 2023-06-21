@@ -4,9 +4,9 @@
 
 #include "Attraction.h"
 
-Attraction::Attraction() : name(), rating() {std::cerr << "Successful use of Attraction constructor";}
+Attraction::Attraction() : name(), rating(), chr(1, 1, 1, 1) {std::cerr << "Successful use of Attraction constructor";}
 Attraction::Attraction(const std::string &name, const Rating &rating)
-        : name(name), rating(rating) {std::cerr << "Successful use of Attraction constructor";}
+        : name(name), rating(rating), chr(1, 1, 1, 1) {std::cerr << "Successful use of Attraction constructor";}
 Attraction::~Attraction() {
     std::cerr << "Successful use of Attraction destructor";
 }
@@ -22,5 +22,9 @@ const Rating & Attraction::getRating()  const{
 
 const std::string &Attraction::getName() const {
     return name;
+}
+
+const Characteristics<char> &Attraction::getChr() const {
+    return chr;
 }
 

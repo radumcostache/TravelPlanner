@@ -25,8 +25,10 @@ destinationFrame::destinationFrame(User &user, Destination &destination) : Frame
     attractionText.setPosition(100, 300);
     std::string attractions;
     auto att = destination.topByReviews();
-    for (auto it:att)
+    for (auto it:att) {
         attractions += it.getName() + " " + std::to_string((int)it.getRating().getVal()) + "*\n";
+        std::cout << "Attraction Tier: " << it.getChr() << '\n';
+    }
     attractionText.setString(attractions);
 }
 

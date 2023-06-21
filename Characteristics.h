@@ -17,12 +17,14 @@ private:
 public:
     Characteristics() = default;
     Characteristics(int a, int b, int c, int d);
+    Characteristics(int a, int b, int c, int d, T t);
 
     float getMatching(const Characteristics &c);
 
     void updateCharacteristics(const Characteristics &extra, int multiplier);
+    friend std::ostream & operator << (std::ostream &out, const Characteristics &c);
 };
 
-#include "Characteristics.cpp"
+
 #endif //OOP_CHARACTERISTICS_H
 
