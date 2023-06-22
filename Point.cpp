@@ -20,7 +20,19 @@
     }
 
     float Point::Distance(const Point &P) const {
-        return acos(sin(x)*sin(P.x)+cos(x)*cos(P.x)*cos(P.y-y))*6371;
+        const double earthRadiusKm = 6371;
+        const double PI = acos(-1);
+
+        double dLat = (P.x - x) * PI / 180;
+        double dLon = (P.y - y) * PI / 180;
+
+        double lat1 = P.x * PI / 180;
+        double lat2 = x * PI / 180;
+
+        double a = sin(dLat/2) * sin(dLat/2) +
+                   sin(dLon/2) * sin(dLon/2) * cos(lat1) * cos(lat2);
+        double c = 2 * atan2(sqrt(a), sqrt(1-a));
+        return earthRadiusKm * c;
     }
 
 
