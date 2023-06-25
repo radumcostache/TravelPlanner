@@ -29,7 +29,8 @@ destinationFrame::destinationFrame(User &user, Destination &destination) : Frame
         attractions += it.getName() + " " + std::to_string((int)it.getRating().getVal()) + "*\n";
         std::cout << "Attraction Tier: " << it.getChr() << '\n';
     }
-    attractionText.setString(attractions);
+    sf::String sfTmp = sf::String::fromUtf8(attractions.begin(), attractions.end());
+    attractionText.setString(sfTmp);
 }
 
 std::string destinationFrame::handleEvent(sf::Event event, sf::RenderWindow &window) {
