@@ -12,6 +12,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <locale>
+#include <codecvt>
 
 double Destination::MAX_DISTANCE = 1000.5;
 
@@ -32,10 +34,12 @@ int main() {
     Frame * F = new startFrame(user);
 
     std::vector<Destination> destinations;
-    std::ifstream dest("destinations.txt");
-    std::string destName;
+    std::wifstream dest("destinations.txt");
+    dest.imbue(std::locale(dest.getloc(), new std::codecvt_utf8<wchar_t>));
+    std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+    std::wstring destName;
     while (dest >> destName) {
-        std::string destDesc;
+        std::wstring destDesc;
         dest.get();
         std::getline(dest, destDesc);
         double lati, longi;
@@ -44,12 +48,12 @@ int main() {
         dest >> nAttr;
         std::vector<Attraction> attractions;
         for (int i = 0; i < nAttr; i++) {
-            std::string attrName;
+            std::wstring attrName;
             dest.get();
             std::getline(dest, attrName);
             double rating;
             dest >> rating;
-            Attraction a(attrName, Rating(rating));
+            Attraction a(converter.to_bytes(attrName), Rating(rating));
             attractions.push_back(a);
         }
         double d[4];
@@ -57,7 +61,7 @@ int main() {
             dest >> d[i];
         }
         Characteristics characteristics(d[0], d[1], d[2], d[3]);
-        Destination dst(destName, destDesc, Point(lati, longi), attractions, characteristics);
+        Destination dst(converter.to_bytes(destName), converter.to_bytes(destDesc), Point(lati, longi), attractions, characteristics);
         destinations.push_back(dst);
     }
     while (window.isOpen()) {
