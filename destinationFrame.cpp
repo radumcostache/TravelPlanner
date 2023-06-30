@@ -8,7 +8,7 @@ destinationFrame::destinationFrame(User &user, Destination &destination) : Frame
     font.loadFromFile("fonts/arial.ttf");
     nameText.setFont(font);
     nameText.setCharacterSize(20);
-    nameText.setFillColor(sf::Color(0xEB6534));
+    nameText.setFillColor(sf::Color(sf::Color::Red));
     nameText.setPosition(20, 100);
     nameText.setString("You are going to " + destination.getName() + " " +
                         std::to_string(user.getLocation().Distance(destination.getLocation())) + "km away");

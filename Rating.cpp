@@ -5,13 +5,13 @@
 #include "Rating.h"
 #include <iostream>
 
-Rating::Rating(): val(1), numberOfRatings(0) {std::cout << "Successful use of Rating constructor";};
+Rating::Rating(): val(1), numberOfRatings(0) {std::cout << "";};
 
 Rating::Rating(float val): val(val), numberOfRatings(1) {
-    std::cerr << "Successful use of Rating constructor";
+    std::cerr << "";
 };
 Rating::Rating(const Rating &other) : val(other.val), numberOfRatings(other.numberOfRatings) {
-    std::cerr << "Successful use of Rating constructor";
+    std::cerr << "";
 }
 
 Rating& Rating::operator=(const Rating& other) {

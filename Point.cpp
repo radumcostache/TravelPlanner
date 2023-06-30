@@ -5,9 +5,9 @@
 #include "Point.h"
 #include <cmath>
 
-    Point::Point() : x(0), y(0) {std::cerr << "Point Constructor";}
-    Point::Point(float x, float y) : x(x), y(y) {std::cerr << "Point constructor";}
-    Point::Point(const Point & other) : x(other.x), y(other.y) {std::cerr << "Point Constructor";}
+    Point::Point() : x(0), y(0) {std::cerr << "";}
+    Point::Point(float x, float y) : x(x), y(y) {std::cerr << "";}
+    Point::Point(const Point & other) : x(other.x), y(other.y) {std::cerr << "";}
 
     Point& Point::operator=(const Point &other) {
         x = other.x;
