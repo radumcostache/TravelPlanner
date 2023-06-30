@@ -18,7 +18,7 @@ public:
     Attraction();
     Attraction(const std::string &name, const Rating &rating);
     Attraction(const Attraction & t) = default;
-    ~Attraction();
+    ~Attraction() = default;
     Attraction &operator =(const Attraction &other) = default;
 
     const Characteristics<char> &getChr() const;

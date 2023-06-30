@@ -20,10 +20,6 @@ Destination::Destination(const std::string &name, const std::string &description
     std::cerr << "Successful use of Destination constructor";
 }
 
-Destination::~Destination() {
-    std::cerr << "Successful use of Destination constructor";
-}
-
 Destination &Destination::operator=(const Destination &other) {
     name = other.name;
     description = other.description;

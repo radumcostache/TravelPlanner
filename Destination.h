@@ -32,7 +32,7 @@ public:
                 const std::vector<Attraction> &attraction,
                 const Characteristics<int> &characteristics);
     Destination(const Destination &) = default;
-    ~Destination();
+    ~Destination() = default;
 
     Destination& operator=(const Destination & other);
     //void addAttraction(const Attraction & A);

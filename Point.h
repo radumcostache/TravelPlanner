@@ -14,7 +14,7 @@ class Point {
      Point();
      Point(float x, float y);
      Point(const Point & other);
-     ~Point();
+     ~Point() = default;
 
      Point& operator=(const Point &other);
 

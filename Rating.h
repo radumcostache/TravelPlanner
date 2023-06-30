@@ -15,7 +15,6 @@ public:
     Rating();
     explicit Rating(float val);
     Rating(const Rating &other);
-    ~Rating();
 
     Rating& operator=(const Rating& other);
     void addRating(int newRating);

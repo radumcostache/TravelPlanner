@@ -56,13 +56,13 @@ startFrame::startFrame(User &user) : Frame(user) {
     latiText.setString("Latitude");
     latiText.setCharacterSize(30);
     latiText.setPosition(100, 100);
-    latiText.setFillColor(sf::Color::Black);
+    latiText.setFillColor(sf::Color::White);
 
     longiText.setFont(font);
     longiText.setString("Longitude");
     longiText.setCharacterSize(30);
     longiText.setPosition(100, 200);
-    longiText.setFillColor(sf::Color::Black);
+    longiText.setFillColor(sf::Color::White);
 
     //Button startButton(sf::Vector2f(100, 300), sf::Vector2f(100, 100), "Start", 30, sf::Color::Green, sf::Color::Red);
     addButton(Button_factory::startButton());

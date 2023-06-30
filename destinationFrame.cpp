@@ -8,20 +8,20 @@ destinationFrame::destinationFrame(User &user, Destination &destination) : Frame
     font.loadFromFile("fonts/arial.ttf");
     nameText.setFont(font);
     nameText.setCharacterSize(20);
-    nameText.setFillColor(sf::Color::Red);
+    nameText.setFillColor(sf::Color(0xEB6534));
     nameText.setPosition(20, 100);
     nameText.setString("You are going to " + destination.getName() + " " +
                         std::to_string(user.getLocation().Distance(destination.getLocation())) + "km away");
 
     descriptionText.setFont(font);
     descriptionText.setCharacterSize(10);
-    descriptionText.setFillColor(sf::Color::Black);
+    descriptionText.setFillColor(sf::Color::White);
     descriptionText.setPosition(20, 150);
     descriptionText.setString(destination.getDescription());
 
     attractionText.setFont(font);
     attractionText.setCharacterSize(30);
-    attractionText.setFillColor(sf::Color::Black);
+    attractionText.setFillColor(sf::Color::White);
     attractionText.setPosition(100, 300);
     std::string attractions;
     auto att = destination.topByReviews();

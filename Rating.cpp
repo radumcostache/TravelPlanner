@@ -13,9 +13,6 @@ Rating::Rating(float val): val(val), numberOfRatings(1) {
 Rating::Rating(const Rating &other) : val(other.val), numberOfRatings(other.numberOfRatings) {
     std::cerr << "Successful use of Rating constructor";
 }
-Rating::~Rating() {
-    std::cerr << "Successful use of Rating destructor";
-}
 
 Rating& Rating::operator=(const Rating& other) {
     val = other.val;

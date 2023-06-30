@@ -17,7 +17,7 @@ public:
     Button yesButton;
     Button noButton;
     tfQuestion(const std::string & question, Characteristics<int> &characteristics);
-    ~tfQuestion() override;
+    ~tfQuestion() = default;
 
     void showQuestion(sf::RenderWindow &window) override;
     std::string handleEvent(sf::Event event, sf::RenderWindow &window) override;

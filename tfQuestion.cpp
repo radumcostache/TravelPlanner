@@ -9,13 +9,10 @@
 tfQuestion::tfQuestion(const std::string & question, Characteristics<int> &characteristics) : Question(question, characteristics),
     yesButton( Button_factory::yButton()),
     noButton(Button_factory::nButton()) {
-    std::cout << "tfQuestion constructor" << std::endl;
     answer = 3;
 }
 
-tfQuestion::~tfQuestion() {
-    std::cout << "tfQuestion destructor" << std::endl;
-}
+
 
 void tfQuestion::showQuestion(sf::RenderWindow &window) {
     sf::Font font;

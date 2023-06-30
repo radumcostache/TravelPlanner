@@ -66,7 +66,7 @@ int main() {
     }
     while (window.isOpen()) {
         sf::Event event;
-        window.clear(sf::Color::Blue);
+        window.clear(sf::Color(0x40476D));
         F->draw(window);
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)

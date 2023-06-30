@@ -17,8 +17,8 @@ private:
     sf::Text latiText;
     sf::Text longiText;
 
-    TextBox latiBox{sf::Vector2f(300, 100), sf::Vector2f(200, 50), 30, sf::Color::Black, sf::Color::Green};
-    TextBox longiBox{sf::Vector2f(300, 200), sf::Vector2f(200, 50), 30, sf::Color::Black, sf::Color::Green};
+    TextBox latiBox{sf::Vector2f(300, 100), sf::Vector2f(200, 50), 30, sf::Color::Black, sf::Color::White};
+    TextBox longiBox{sf::Vector2f(300, 200), sf::Vector2f(200, 50), 30, sf::Color::Black, sf::Color::White};
 
 public:
     startFrame();
